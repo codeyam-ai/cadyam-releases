@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Download CadYam</title>
+<meta name="description" content="Download CadYam for macOS, Windows and Linux, with step-by-step install instructions.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a drafting sheet. A dot-grid hero with the download for your OS,
+   then one card per platform, then install steps as tabs. */
+:root {
+  --paper: #f6f8fc;
+  --sheet: #ffffff;
+  --ink: #12203a;
+  --ink-soft: #4a5874;
+  --rule: #dbe2ee;
+  --grid: #c9d5ea;
+  --blue: #1f6fe5;
+  --blue-deep: #1557bf;
+  --blue-wash: #e8f0fd;
+  --vertex: #ff9425;
+  --on-blue: #ffffff;
+  --code-bg: #eef2f8;
+  --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0d1526;
+    --sheet: #131d33;
+    --ink: #e6ecf7;
+    --ink-soft: #9fb0cc;
+    --rule: #26334f;
+    --grid: #22314f;
+    --blue: #4a8df2;
+    --blue-deep: #6ea4f5;
+    --blue-wash: #17284a;
+    --vertex: #ffa64d;
+    --on-blue: #06101f;
+    --code-bg: #0a1120;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 16px/1.6 var(--body);
+}
+a { color: var(--blue-deep); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--vertex); outline-offset: 2px; border-radius: 6px; }
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+code, .mono { font-family: var(--mono); font-size: 0.88em; }
+code { background: var(--code-bg); padding: 0.1em 0.4em; border-radius: 4px; overflow-wrap: anywhere; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.1; text-wrap: balance; margin: 0; }
+
+/* Top bar */
+.bar { border-bottom: 1px solid var(--rule); background: var(--sheet); }
+.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font: 700 20px/1 var(--display); }
+.brand img { width: 32px; height: 32px; }
+.bar nav { display: flex; gap: 20px; font-size: 15px; }
+.bar nav a { color: var(--ink-soft); text-decoration: none; }
+.bar nav a:hover { color: var(--ink); }
+
+/* Hero */
+.hero {
+  background-color: var(--sheet);
+  background-image: radial-gradient(var(--grid) 1.2px, transparent 1.3px);
+  background-size: 22px 22px;
+  border-bottom: 1px solid var(--rule);
+}
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 40px; align-items: center; padding-block: 64px; }
+.eyebrow { font: 500 13px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); display: flex; align-items: center; gap: 8px; }
+.eyebrow .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--vertex); box-shadow: 0 0 0 3px var(--sheet), 0 0 0 4px var(--vertex); }
+.hero h1 { font-size: clamp(40px, 6vw, 64px); margin-top: 18px; letter-spacing: -0.02em; }
+.hero p.lede { font-size: 19px; color: var(--ink-soft); max-width: 34em; margin: 16px 0 28px; }
+.cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--blue); color: var(--on-blue);
+  font: 600 17px/1 var(--body); text-decoration: none;
+  padding: 16px 24px; border-radius: 10px; border: 0;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.08), 0 6px 18px -8px var(--blue);
+  transition: transform 120ms ease, background 120ms ease;
+}
+.btn:hover { background: var(--blue-deep); transform: translateY(-1px); }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.btn small { font: 400 13px/1 var(--mono); opacity: 0.85; }
+.cta .alt { font-size: 15px; color: var(--ink-soft); }
+.meta { margin-top: 22px; font: 400 14px/1.5 var(--mono); color: var(--ink-soft); }
+.meta strong { color: var(--ink); font-weight: 500; }
+.hero-art { display: flex; justify-content: center; }
+.hero-art img { width: min(260px, 100%); height: auto; filter: drop-shadow(0 24px 40px rgba(18, 32, 58, 0.22)); }
+
+/* Sections */
+section.block { padding-block: 56px; }
+.section-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; margin-bottom: 24px; }
+.section-head h2 { font-size: 32px; letter-spacing: -0.01em; }
+.section-head p { margin: 0; color: var(--ink-soft); }
+
+/* Platform cards */
+.platforms { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.platform {
+  background: var(--sheet); border: 1px solid var(--rule); border-radius: 14px;
+  padding: 24px; display: flex; flex-direction: column; gap: 16px; min-width: 0;
+}
+.platform.mine { border-color: var(--blue); box-shadow: 0 0 0 1px var(--blue); }
+.platform header { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.platform h3 { font-size: 24px; }
+.badge { font: 500 11px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue-deep); background: var(--blue-wash); padding: 6px 8px; border-radius: 999px; }
+.platform .req { margin: 0; color: var(--ink-soft); font-size: 15px; }
+.files { display: flex; flex-direction: column; gap: 10px; margin-top: auto; }
+.file {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 12px 14px; border-radius: 10px; text-decoration: none; color: var(--ink);
+  border: 1px solid var(--rule); background: var(--paper); min-width: 0;
+  transition: border-color 120ms ease, background 120ms ease;
+}
+.file:hover { border-color: var(--blue); background: var(--blue-wash); }
+.file .what { display: flex; flex-direction: column; min-width: 0; }
+.file .what b { font-weight: 600; }
+.file .what span { font: 400 12.5px/1.4 var(--mono); color: var(--ink-soft); overflow-wrap: anywhere; }
+.file .size { font: 500 13px/1 var(--mono); color: var(--ink-soft); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.file svg { width: 18px; height: 18px; flex: none; color: var(--blue-deep); }
+
+/* Install tabs */
+.install { background: var(--sheet); border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; }
+.tabs { display: flex; border-bottom: 1px solid var(--rule); overflow-x: auto; }
+.tabs button {
+  flex: 1 0 auto; background: none; border: 0; border-bottom: 3px solid transparent;
+  padding: 16px 22px; font: 600 16px/1 var(--body); color: var(--ink-soft); cursor: pointer;
+}
+.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--vertex); }
+.tabs button:hover { color: var(--ink); }
+.panel { padding: 28px; }
+.panel h3 { font-size: 20px; margin-bottom: 4px; }
+.panel h3 + p { margin-top: 0; color: var(--ink-soft); }
+.panel .cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+.panel .cols > div { min-width: 0; }
+ol.steps { counter-reset: step; list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-direction: column; gap: 14px; max-width: 62ch; }
+ol.steps li { counter-increment: step; position: relative; padding-left: 40px; }
+ol.steps li::before {
+  content: counter(step); position: absolute; left: 0; top: 1px;
+  width: 26px; height: 26px; border-radius: 50%;
+  border: 2px solid var(--blue); color: var(--blue-deep);
+  font: 600 13px/22px var(--mono); text-align: center; background: var(--sheet);
+}
+.note { margin-top: 20px; padding: 14px 16px; border-radius: 10px; background: var(--blue-wash); font-size: 15px; max-width: 70ch; }
+.note b { font-weight: 600; }
+pre.cmd { margin: 8px 0 0; background: var(--code-bg); border: 1px solid var(--rule); border-radius: 8px; padding: 12px 14px; overflow-x: auto; font: 400 14px/1.5 var(--mono); }
+
+/* Verify + updates */
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+.pair > div { min-width: 0; }
+.pair h3 { font-size: 22px; margin-bottom: 8px; }
+.pair p { margin: 0 0 10px; max-width: 60ch; }
+table.sums { border-collapse: collapse; width: 100%; font-size: 15px; margin-top: 8px; }
+table.sums td { padding: 8px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+table.sums td:first-child { color: var(--ink-soft); padding-right: 16px; white-space: nowrap; }
+
+footer { border-top: 1px solid var(--rule); background: var(--sheet); }
+footer .wrap { padding-block: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; color: var(--ink-soft); font-size: 14px; }
+
+@media (max-width: 860px) {
+  .hero .wrap { grid-template-columns: 1fr; padding-block: 40px; gap: 24px; }
+  .hero-art { order: -1; justify-content: flex-start; }
+  .hero-art img { width: 96px; }
+  .platforms { grid-template-columns: 1fr; }
+  .panel .cols, .pair { grid-template-columns: 1fr; gap: 20px; }
+  .bar nav a.hide-sm { display: none; }
+}
+@media (max-width: 480px) {
+  .panel { padding: 20px; }
+  .tabs button { padding: 14px 16px; }
+  .btn { width: 100%; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="assets/icon.png" alt="" width="32" height="32">CadYam</a>
+    <nav>
+      <a href="#install">Install help</a>
+      <a class="hide-sm" href="#verify">Verify</a>
+      <a href="https://github.com/codeyam-ai/cadyam-releases/releases">All releases</a>
+    </nav>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow"><span class="dot"></span><span id="eyebrow">Latest release</span></div>
+      <h1>Download CadYam</h1>
+      <p class="lede">Design anything from a deck sketch or a floor plan to a part you can 3D print, with an AI assistant that works right in your drawings. For macOS, Windows and Linux.</p>
+      <div class="cta">
+        <a class="btn" id="primary" href="https://github.com/codeyam-ai/cadyam-releases/releases/latest">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>
+          <span id="primary-label">Download CadYam</span>
+        </a>
+        <a class="alt" href="#platforms">Other platforms</a>
+      </div>
+      <div class="meta" id="meta">Loading the latest version…</div>
+    </div>
+    <div class="hero-art"><img src="assets/icon.png" alt="The CadYam app icon" width="256" height="256"></div>
+  </div>
+</div>
+
+<main>
+  <section class="block" id="platforms">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Choose your platform</h2>
+        <p id="release-line">Every installer is built from the same release.</p>
+      </div>
+      <div class="platforms">
+        <article class="platform" data-os="mac">
+          <header><h3>macOS</h3><span class="badge" hidden>Your system</span></header>
+          <p class="req">macOS 11 Big Sur or later. One download runs natively on Apple Silicon and Intel Macs. Signed and notarized by Apple.</p>
+          <div class="files">
+            <a class="file" data-asset="dmg" href="https://github.com/codeyam-ai/cadyam-releases/releases/latest">
+              <span class="what"><b>Disk image (.dmg)</b><span data-name>Universal</span></span>
+              <span class="size" data-size></span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>
+            </a>
+          </div>
+        </article>
+        <article class="platform" data-os="win">
+          <header><h3>Windows</h3><span class="badge" hidden>Your system</span></header>
+          <p class="req">Windows 10 or 11, 64-bit. Installs just for you, so you don't need an administrator password.</p>
+          <div class="files">
+            <a class="file" data-asset="exe" href="https://github.com/codeyam-ai/cadyam-releases/releases/latest">
+              <span class="what"><b>Installer (.exe)</b><span data-name>64-bit</span></span>
+              <span class="size" data-size></span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>
+            </a>
+          </div>
+        </article>
+        <article class="platform" data-os="linux">
+          <header><h3>Linux</h3><span class="badge" hidden>Your system</span></header>
+          <p class="req">64-bit x86 (x86_64). Use the .deb on Debian, Ubuntu and their relatives, or the AppImage anywhere else.</p>
+          <div class="files">
+            <a class="file" data-asset="deb" href="https://github.com/codeyam-ai/cadyam-releases/releases/latest">
+              <span class="what"><b>Debian / Ubuntu (.deb)</b><span data-name>amd64</span></span>
+              <span class="size" data-size></span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>
+            </a>
+            <a class="file" data-asset="appimage" href="https://github.com/codeyam-ai/cadyam-releases/releases/latest">
+              <span class="what"><b>AppImage</b><span data-name>x86_64, any distribution</span></span>
+              <span class="size" data-size></span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="install" style="padding-top: 0">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How to install</h2>
+        <p>It takes about a minute.</p>
+      </div>
+      <div class="install">
+        <div class="tabs" role="tablist" aria-label="Operating system">
+          <button role="tab" id="tab-mac" aria-controls="panel-mac" aria-selected="true">macOS</button>
+          <button role="tab" id="tab-win" aria-controls="panel-win" aria-selected="false">Windows</button>
+          <button role="tab" id="tab-linux" aria-controls="panel-linux" aria-selected="false">Linux</button>
+        </div>
+
+        <div class="panel" role="tabpanel" id="panel-mac" aria-labelledby="tab-mac">
+          <h3>Install on macOS</h3>
+          <p>Uses the <code data-fname="dmg">.dmg</code> download.</p>
+          <ol class="steps">
+            <li>Open the downloaded <b>.dmg</b> file. It's usually in your <b>Downloads</b> folder.</li>
+            <li>In the window that appears, drag the <b>CadYam</b> icon onto the <b>Applications</b> folder.</li>
+            <li>Open <b>Applications</b> and double-click <b>CadYam</b>.</li>
+            <li>The first time, macOS asks whether you want to open an app downloaded from the internet. Click <b>Open</b>.</li>
+            <li>Eject the CadYam disk image in Finder's sidebar. You can delete the .dmg file now.</li>
+          </ol>
+          <p class="note"><b>Tip:</b> to keep CadYam in your Dock, right-click its Dock icon while it's running and choose <b>Options → Keep in Dock</b>.</p>
+        </div>
+
+        <div class="panel" role="tabpanel" id="panel-win" aria-labelledby="tab-win" hidden>
+          <h3>Install on Windows</h3>
+          <p>Uses the <code data-fname="exe">.exe</code> installer.</p>
+          <ol class="steps">
+            <li>Run the downloaded installer. If your browser asks whether to keep the file, choose <b>Keep</b>.</li>
+            <li>Windows may show a blue <b>"Windows protected your PC"</b> screen. Click <b>More info</b>, then <b>Run anyway</b>.</li>
+            <li>Follow the installer. It installs for your user account only, so it doesn't ask for an administrator password.</li>
+            <li>Start CadYam from the <b>Start</b> menu.</li>
+          </ol>
+          <p class="note"><b>Why the warning?</b> The Windows installer isn't code-signed yet, so SmartScreen doesn't recognize it. To check that your download is the real one, compare its checksum with the list under <a href="#verify">Verify your download</a>.</p>
+        </div>
+
+        <div class="panel" role="tabpanel" id="panel-linux" aria-labelledby="tab-linux" hidden>
+          <div class="cols">
+            <div>
+              <h3>Debian, Ubuntu and relatives</h3>
+              <p>Uses the <code data-fname="deb">.deb</code> package.</p>
+              <ol class="steps">
+                <li>Open a terminal in the folder you downloaded it to.</li>
+                <li>Install it with apt, which also installs anything it depends on:
+                  <pre class="cmd" data-cmd="deb">sudo apt install ./cadyam_VERSION_amd64.deb</pre>
+                </li>
+                <li>Start CadYam from your applications menu, or run <code>cadyam</code>.</li>
+              </ol>
+            </div>
+            <div>
+              <h3>Any other distribution</h3>
+              <p>Uses the <code data-fname="appimage">AppImage</code>.</p>
+              <ol class="steps">
+                <li>Make the downloaded file executable:
+                  <pre class="cmd" data-cmd="appimage">chmod +x cadyam_VERSION_x86_64.AppImage</pre>
+                </li>
+                <li>Double-click it, or run it from the terminal:
+                  <pre class="cmd" data-cmd="appimage-run">./cadyam_VERSION_x86_64.AppImage</pre>
+                </li>
+              </ol>
+            </div>
+          </div>
+          <p class="note"><b>AppImage won't start?</b> On Ubuntu 22.04 and later, install FUSE 2 first: <code>sudo apt install libfuse2</code> (on Ubuntu 24.04 it's <code>libfuse2t64</code>).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="verify" style="padding-top: 0">
+    <div class="wrap pair">
+      <div>
+        <h3>Verify your download</h3>
+        <p>Each release includes <a id="sums-link" href="https://github.com/codeyam-ai/cadyam-releases/releases/latest">SHA256SUMS.txt</a>, which lists the SHA-256 checksum of every file. To check a file, run the command for your system and compare the result with its line in that list.</p>
+        <div style="overflow-x: auto">
+          <table class="sums">
+            <tr><td>macOS</td><td><code>shasum -a 256 &lt;file&gt;</code></td></tr>
+            <tr><td>Windows</td><td><code>Get-FileHash &lt;file&gt;</code> in PowerShell</td></tr>
+            <tr><td>Linux</td><td><code>sha256sum &lt;file&gt;</code></td></tr>
+          </table>
+        </div>
+      </div>
+      <div>
+        <h3>Staying up to date</h3>
+        <p>CadYam checks for a new version once a day. When one is out, it offers <b>Update and restart</b>, and updates itself in place. You only need this page for a first install.</p>
+        <p>To see what changed in each version, read the <a id="notes-link" href="https://github.com/codeyam-ai/cadyam-releases/releases">release notes</a>.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© CodeYam. CadYam installers are hosted on GitHub.</span>
+    <a href="https://github.com/codeyam-ai/cadyam-releases/releases">Every release and its notes</a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var REPO = "codeyam-ai/cadyam-releases";
+  var LATEST = "https://github.com/" + REPO + "/releases/latest";
+  var PATTERNS = {
+    dmg: /\.dmg$/i,
+    exe: /-setup\.exe$/i,
+    deb: /\.deb$/i,
+    appimage: /\.AppImage$/,
+    sums: /^SHA256SUMS\.txt$/
+  };
+  var NAMES = { mac: "macOS", win: "Windows", linux: "Linux" };
+  var PRIMARY = { mac: "dmg", win: "exe", linux: "appimage" };
+
+  function detectOS() {
+    var ua = navigator.userAgent || "";
+    var p = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || "";
+    if (/iPhone|iPad|iPod|Android/i.test(ua)) return null;
+    if (/Mac/i.test(p) || /Macintosh/i.test(ua)) return "mac";
+    if (/Win/i.test(p) || /Windows/i.test(ua)) return "win";
+    if (/Linux|X11/i.test(p) || /Linux/i.test(ua)) return "linux";
+    return null;
+  }
+
+  function mb(bytes) { return (bytes / 1048576).toFixed(0) + " MB"; }
+
+  function showTab(os) {
+    ["mac", "win", "linux"].forEach(function (k) {
+      document.getElementById("tab-" + k).setAttribute("aria-selected", String(k === os));
+      document.getElementById("panel-" + k).hidden = k !== os;
+    });
+  }
+  document.querySelectorAll(".tabs button").forEach(function (b) {
+    b.addEventListener("click", function () { showTab(b.id.slice(4)); });
+  });
+
+  var os = detectOS();
+  var primary = document.getElementById("primary");
+  var primaryLabel = document.getElementById("primary-label");
+  if (os) {
+    primaryLabel.textContent = "Download for " + NAMES[os];
+    var card = document.querySelector('.platform[data-os="' + os + '"]');
+    card.classList.add("mine");
+    card.querySelector(".badge").hidden = false;
+    showTab(os);
+  } else {
+    primary.href = "#platforms";
+    primaryLabel.textContent = "Choose your platform";
+  }
+
+  var meta = document.getElementById("meta");
+  fetch("https://api.github.com/repos/" + REPO + "/releases/latest", { headers: { Accept: "application/vnd.github+json" } })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (rel) {
+      var version = String(rel.tag_name || "").replace(/^v/, "");
+      var found = {};
+      (rel.assets || []).forEach(function (a) {
+        Object.keys(PATTERNS).forEach(function (k) {
+          if (!found[k] && PATTERNS[k].test(a.name)) found[k] = a;
+        });
+      });
+      document.querySelectorAll("[data-asset]").forEach(function (el) {
+        var a = found[el.getAttribute("data-asset")];
+        if (!a) return;
+        el.href = a.browser_download_url;
+        el.querySelector("[data-name]").textContent = a.name;
+        el.querySelector("[data-size]").textContent = mb(a.size);
+      });
+      document.querySelectorAll("[data-fname]").forEach(function (el) {
+        var a = found[el.getAttribute("data-fname")];
+        if (a) el.textContent = a.name;
+      });
+      if (found.deb) document.querySelector('[data-cmd="deb"]').textContent = "sudo apt install ./" + found.deb.name;
+      if (found.appimage) {
+        document.querySelector('[data-cmd="appimage"]').textContent = "chmod +x " + found.appimage.name;
+        document.querySelector('[data-cmd="appimage-run"]').textContent = "./" + found.appimage.name;
+      }
+      if (found.sums) document.getElementById("sums-link").href = found.sums.browser_download_url;
+      if (rel.html_url) document.getElementById("notes-link").href = rel.html_url;
+
+      if (os && found[PRIMARY[os]]) {
+        var a = found[PRIMARY[os]];
+        primary.href = a.browser_download_url;
+        primaryLabel.innerHTML = "";
+        primaryLabel.appendChild(document.createTextNode("Download for " + NAMES[os] + " "));
+        var s = document.createElement("small");
+        s.textContent = mb(a.size);
+        primaryLabel.appendChild(s);
+      }
+      var date = rel.published_at ? new Date(rel.published_at).toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" }) : "";
+      document.getElementById("eyebrow").textContent = "Version " + version;
+      meta.innerHTML = "";
+      var strong = document.createElement("strong");
+      strong.textContent = "CadYam " + version;
+      meta.appendChild(strong);
+      meta.appendChild(document.createTextNode(date ? " · released " + date + " · " : " · "));
+      var notes = document.createElement("a");
+      notes.href = rel.html_url || LATEST;
+      notes.textContent = "What's new";
+      meta.appendChild(notes);
+      document.getElementById("release-line").textContent = "All installers for CadYam " + version + ".";
+    })
+    .catch(function () {
+      meta.innerHTML = "";
+      meta.appendChild(document.createTextNode("Couldn't load the version details. The buttons open "));
+      var a = document.createElement("a");
+      a.href = LATEST;
+      a.textContent = "the latest release";
+      meta.appendChild(a);
+      meta.appendChild(document.createTextNode(", where every file is listed."));
+      if (os) primary.href = LATEST;
+    });
+})();
+</script>
+</body>
+</html>
