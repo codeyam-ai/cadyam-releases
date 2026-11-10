@@ -83,11 +83,11 @@ h1, h2, h3 { font-family: var(--display); line-height: 1.1; text-wrap: balance; 
   background-size: 22px 22px;
   border-bottom: 1px solid var(--rule);
 }
-.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 40px; align-items: center; padding-block: 64px; }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 40px; align-items: center; padding-block: 32px; }
 .eyebrow { font: 500 13px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); display: flex; align-items: center; gap: 8px; }
 .eyebrow .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--vertex); box-shadow: 0 0 0 3px var(--sheet), 0 0 0 4px var(--vertex); }
-.hero h1 { font-size: clamp(40px, 6vw, 64px); margin-top: 18px; letter-spacing: -0.02em; }
-.hero p.lede { font-size: 19px; color: var(--ink-soft); max-width: 34em; margin: 16px 0 28px; }
+.hero h1 { font-size: clamp(36px, 4.4vw, 52px); margin-top: 12px; letter-spacing: -0.02em; }
+.hero p.lede { font-size: 17.5px; color: var(--ink-soft); max-width: 36em; margin: 12px 0 20px; }
 .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; }
 .btn {
   display: inline-flex; align-items: center; gap: 10px;
@@ -101,32 +101,33 @@ h1, h2, h3 { font-family: var(--display); line-height: 1.1; text-wrap: balance; 
 .btn svg { width: 20px; height: 20px; flex: none; }
 .btn small { font: 400 13px/1 var(--mono); opacity: 0.85; }
 .cta .alt { font-size: 15px; color: var(--ink-soft); }
-.meta { margin-top: 22px; font: 400 14px/1.5 var(--mono); color: var(--ink-soft); }
+.meta { margin-top: 14px; font: 400 14px/1.5 var(--mono); color: var(--ink-soft); }
 .meta strong { color: var(--ink); font-weight: 500; }
 .hero-art { display: flex; justify-content: center; }
-.hero-art img { width: min(260px, 100%); height: auto; filter: drop-shadow(0 24px 40px rgba(18, 32, 58, 0.22)); }
+.hero-art img { width: min(176px, 100%); height: auto; filter: drop-shadow(0 24px 40px rgba(18, 32, 58, 0.22)); }
 
 /* Sections */
-section.block { padding-block: 56px; }
-.section-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; margin-bottom: 24px; }
-.section-head h2 { font-size: 32px; letter-spacing: -0.01em; }
+section.block { padding-block: 44px; }
+#install { padding-block: 32px 44px; }
+.section-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; margin-bottom: 16px; }
+.section-head h2 { font-size: 28px; letter-spacing: -0.01em; }
 .section-head p { margin: 0; color: var(--ink-soft); }
 
 /* Platform cards */
 .platforms { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
 .platform {
   background: var(--sheet); border: 1px solid var(--rule); border-radius: 14px;
-  padding: 24px; display: flex; flex-direction: column; gap: 16px; min-width: 0;
+  padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; min-width: 0;
 }
 .platform.mine { border-color: var(--blue); box-shadow: 0 0 0 1px var(--blue); }
 .platform header { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-.platform h3 { font-size: 24px; }
+.platform h3 { font-size: 21px; }
 .badge { font: 500 11px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue-deep); background: var(--blue-wash); padding: 6px 8px; border-radius: 999px; }
-.platform .req { margin: 0; color: var(--ink-soft); font-size: 15px; }
-.files { display: flex; flex-direction: column; gap: 10px; margin-top: auto; }
+.platform .req { margin: 0; color: var(--ink-soft); font-size: 14.5px; line-height: 1.5; }
+.files { display: flex; flex-direction: column; gap: 8px; margin-top: auto; }
 .file {
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
-  padding: 12px 14px; border-radius: 10px; text-decoration: none; color: var(--ink);
+  padding: 9px 12px; border-radius: 10px; text-decoration: none; color: var(--ink);
   border: 1px solid var(--rule); background: var(--paper); min-width: 0;
   transition: border-color 120ms ease, background 120ms ease;
 }
@@ -224,56 +225,7 @@ footer .wrap { padding-block: 24px; display: flex; flex-wrap: wrap; justify-cont
 </div>
 
 <main>
-  <section class="block" id="platforms">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Choose your platform</h2>
-        <p id="release-line">Every installer is built from the same release.</p>
-      </div>
-      <div class="platforms">
-        <article class="platform" data-os="mac">
-          <header><h3>macOS</h3><span class="badge" hidden>Your system</span></header>
-          <p class="req">macOS 11 Big Sur or later. One download runs natively on Apple Silicon and Intel Macs. Signed and notarized by Apple.</p>
-          <div class="files">
-            <a class="file" data-asset="dmg" href="https://github.com/codeyam-ai/cadyam-releases/releases/latest">
-              <span class="what"><b>Disk image (.dmg)</b><span data-name>Universal</span></span>
-              <span class="size" data-size></span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>
-            </a>
-          </div>
-        </article>
-        <article class="platform" data-os="win">
-          <header><h3>Windows</h3><span class="badge" hidden>Your system</span></header>
-          <p class="req">Windows 10 or 11, 64-bit. Installs just for you, so you don't need an administrator password.</p>
-          <div class="files">
-            <a class="file" data-asset="exe" href="https://github.com/codeyam-ai/cadyam-releases/releases/latest">
-              <span class="what"><b>Installer (.exe)</b><span data-name>64-bit</span></span>
-              <span class="size" data-size></span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>
-            </a>
-          </div>
-        </article>
-        <article class="platform" data-os="linux">
-          <header><h3>Linux</h3><span class="badge" hidden>Your system</span></header>
-          <p class="req">64-bit x86 (x86_64). Use the .deb on Debian, Ubuntu and their relatives, or the AppImage anywhere else.</p>
-          <div class="files">
-            <a class="file" data-asset="deb" href="https://github.com/codeyam-ai/cadyam-releases/releases/latest">
-              <span class="what"><b>Debian / Ubuntu (.deb)</b><span data-name>amd64</span></span>
-              <span class="size" data-size></span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>
-            </a>
-            <a class="file" data-asset="appimage" href="https://github.com/codeyam-ai/cadyam-releases/releases/latest">
-              <span class="what"><b>AppImage</b><span data-name>x86_64, any distribution</span></span>
-              <span class="size" data-size></span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>
-            </a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="install" style="padding-top: 0">
+  <section class="block" id="install">
     <div class="wrap">
       <div class="section-head">
         <h2>How to install</h2>
@@ -339,6 +291,55 @@ footer .wrap { padding-block: 24px; display: flex; flex-wrap: wrap; justify-cont
           </div>
           <p class="note"><b>AppImage won't start?</b> On Ubuntu 22.04 and later, install FUSE 2 first: <code>sudo apt install libfuse2</code> (on Ubuntu 24.04 it's <code>libfuse2t64</code>).</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="platforms" style="padding-top: 0">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Choose your platform</h2>
+        <p id="release-line">Every installer is built from the same release.</p>
+      </div>
+      <div class="platforms">
+        <article class="platform" data-os="mac">
+          <header><h3>macOS</h3><span class="badge" hidden>Your system</span></header>
+          <p class="req">macOS 11 Big Sur or later. One download runs natively on Apple Silicon and Intel Macs. Signed and notarized by Apple.</p>
+          <div class="files">
+            <a class="file" data-asset="dmg" href="https://github.com/codeyam-ai/cadyam-releases/releases/latest">
+              <span class="what"><b>Disk image (.dmg)</b><span data-name>Universal</span></span>
+              <span class="size" data-size></span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>
+            </a>
+          </div>
+        </article>
+        <article class="platform" data-os="win">
+          <header><h3>Windows</h3><span class="badge" hidden>Your system</span></header>
+          <p class="req">Windows 10 or 11, 64-bit. Installs just for you, so you don't need an administrator password.</p>
+          <div class="files">
+            <a class="file" data-asset="exe" href="https://github.com/codeyam-ai/cadyam-releases/releases/latest">
+              <span class="what"><b>Installer (.exe)</b><span data-name>64-bit</span></span>
+              <span class="size" data-size></span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>
+            </a>
+          </div>
+        </article>
+        <article class="platform" data-os="linux">
+          <header><h3>Linux</h3><span class="badge" hidden>Your system</span></header>
+          <p class="req">64-bit x86 (x86_64). Use the .deb on Debian, Ubuntu and their relatives, or the AppImage anywhere else.</p>
+          <div class="files">
+            <a class="file" data-asset="deb" href="https://github.com/codeyam-ai/cadyam-releases/releases/latest">
+              <span class="what"><b>Debian / Ubuntu (.deb)</b><span data-name>amd64</span></span>
+              <span class="size" data-size></span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>
+            </a>
+            <a class="file" data-asset="appimage" href="https://github.com/codeyam-ai/cadyam-releases/releases/latest">
+              <span class="what"><b>AppImage</b><span data-name>x86_64, any distribution</span></span>
+              <span class="size" data-size></span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>
+            </a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
