@@ -164,14 +164,10 @@ ol.steps li::before {
 .note b { font-weight: 600; }
 pre.cmd { margin: 8px 0 0; background: var(--code-bg); border: 1px solid var(--rule); border-radius: 8px; padding: 12px 14px; overflow-x: auto; font: 400 14px/1.5 var(--mono); }
 
-/* Verify + updates */
-.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
-.pair > div { min-width: 0; }
-.pair h3 { font-size: 22px; margin-bottom: 8px; }
-.pair p { margin: 0 0 10px; max-width: 60ch; }
-table.sums { border-collapse: collapse; width: 100%; font-size: 15px; margin-top: 8px; }
-table.sums td { padding: 8px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
-table.sums td:first-child { color: var(--ink-soft); padding-right: 16px; white-space: nowrap; }
+/* Updates */
+.updates h3 { font-size: 22px; margin-bottom: 8px; }
+.updates p { margin: 0 0 10px; max-width: 60ch; }
+.updates p:last-child { margin-bottom: 0; }
 
 footer { border-top: 1px solid var(--rule); background: var(--sheet); }
 footer .wrap { padding-block: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; color: var(--ink-soft); font-size: 14px; }
@@ -181,8 +177,7 @@ footer .wrap { padding-block: 24px; display: flex; flex-wrap: wrap; justify-cont
   .hero-art { order: -1; justify-content: flex-start; }
   .hero-art img { width: 96px; }
   .platforms { grid-template-columns: 1fr; }
-  .panel .cols, .pair { grid-template-columns: 1fr; gap: 20px; }
-  .bar nav a.hide-sm { display: none; }
+  .panel .cols { grid-template-columns: 1fr; gap: 20px; }
 }
 @media (max-width: 480px) {
   .panel { padding: 20px; }
@@ -199,7 +194,6 @@ footer .wrap { padding-block: 24px; display: flex; flex-wrap: wrap; justify-cont
     <a class="brand" href="./"><img src="assets/icon.png" alt="" width="32" height="32">CadYam</a>
     <nav>
       <a href="#install">Install help</a>
-      <a class="hide-sm" href="#verify">Verify</a>
       <a href="https://github.com/codeyam-ai/cadyam-releases/releases">All releases</a>
     </nav>
   </div>
@@ -260,7 +254,7 @@ footer .wrap { padding-block: 24px; display: flex; flex-wrap: wrap; justify-cont
             <li>Follow the installer. It installs for your user account only, so it doesn't ask for an administrator password.</li>
             <li>Start CadYam from the <b>Start</b> menu.</li>
           </ol>
-          <p class="note"><b>Why the warning?</b> The Windows installer isn't code-signed yet, so SmartScreen doesn't recognize it. To check that your download is the real one, compare its checksum with the list under <a href="#verify">Verify your download</a>.</p>
+          <p class="note"><b>Why the warning?</b> The Windows installer isn't code-signed yet, so SmartScreen doesn't recognize it.</p>
         </div>
 
         <div class="panel" role="tabpanel" id="panel-linux" aria-labelledby="tab-linux" hidden>
@@ -344,24 +338,11 @@ footer .wrap { padding-block: 24px; display: flex; flex-wrap: wrap; justify-cont
     </div>
   </section>
 
-  <section class="block" id="verify" style="padding-top: 0">
-    <div class="wrap pair">
-      <div>
-        <h3>Verify your download</h3>
-        <p>Each release includes <a id="sums-link" href="https://github.com/codeyam-ai/cadyam-releases/releases/latest">SHA256SUMS.txt</a>, which lists the SHA-256 checksum of every file. To check a file, run the command for your system and compare the result with its line in that list.</p>
-        <div style="overflow-x: auto">
-          <table class="sums">
-            <tr><td>macOS</td><td><code>shasum -a 256 &lt;file&gt;</code></td></tr>
-            <tr><td>Windows</td><td><code>Get-FileHash &lt;file&gt;</code> in PowerShell</td></tr>
-            <tr><td>Linux</td><td><code>sha256sum &lt;file&gt;</code></td></tr>
-          </table>
-        </div>
-      </div>
-      <div>
-        <h3>Staying up to date</h3>
-        <p>CadYam checks for a new version once a day. When one is out, it offers <b>Update and restart</b>, and updates itself in place. You only need this page for a first install.</p>
-        <p>To see what changed in each version, read the <a id="notes-link" href="https://github.com/codeyam-ai/cadyam-releases/releases">release notes</a>.</p>
-      </div>
+  <section class="block" id="updates" style="padding-top: 0">
+    <div class="wrap updates">
+      <h3>Staying up to date</h3>
+      <p>CadYam checks for a new version once a day. When one is out, it offers <b>Update and restart</b>, and updates itself in place. You only need this page for a first install.</p>
+      <p>To see what changed in each version, read the <a id="notes-link" href="https://github.com/codeyam-ai/cadyam-releases/releases">release notes</a>.</p>
     </div>
   </section>
 </main>
@@ -381,8 +362,7 @@ footer .wrap { padding-block: 24px; display: flex; flex-wrap: wrap; justify-cont
     dmg: /\.dmg$/i,
     exe: /-setup\.exe$/i,
     deb: /\.deb$/i,
-    appimage: /\.AppImage$/,
-    sums: /^SHA256SUMS\.txt$/
+    appimage: /\.AppImage$/
   };
   var NAMES = { mac: "macOS", win: "Windows", linux: "Linux" };
   var PRIMARY = { mac: "dmg", win: "exe", linux: "appimage" };
@@ -450,7 +430,6 @@ footer .wrap { padding-block: 24px; display: flex; flex-wrap: wrap; justify-cont
         document.querySelector('[data-cmd="appimage"]').textContent = "chmod +x " + found.appimage.name;
         document.querySelector('[data-cmd="appimage-run"]').textContent = "./" + found.appimage.name;
       }
-      if (found.sums) document.getElementById("sums-link").href = found.sums.browser_download_url;
       if (rel.html_url) document.getElementById("notes-link").href = rel.html_url;
 
       if (os && found[PRIMARY[os]]) {
